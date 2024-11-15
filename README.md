@@ -25,13 +25,40 @@ Go to the [OpenAI website](https://beta.openai.com/signup/) and sign up for an a
 3. Copy the key and save it somewhere safe. You won’t be able to see it again.
 
 
+
+## **How to get the dataset**
+Kaggle is the famous platform which is offering machine learning compititions and opensource datasets
+Note that if you want to use Kaggle, you must have an account but one can easily log in using one's Google or Fakebook or Yahoo account
+We need to install Kaggle API (Application Programming Interface) first:
+
+```
+! pip install kaggle
+```
+On the Kaggle home page in your browser, click on the icon in the upper right corner and select "Account" from the menu bar to go to the account management page. In the "API" section, select "Create New API Token" to download the kaggle.json file to your computer. **After uploading that json file to colab by clicking on the folder symbol in the leftmost tab**, run the following cell.
+
+```
+import kaggle
+from kaggle.api.kaggle_api_extended import KaggleApi
+api = KaggleApi()
+api.authenticate()
+api.model_list_cli()
+```
+we can download datasets by using following command
+```
+! kaggle datasets download <name-of-dataset>
+```
+
+
 ## **Dataset Details**
+
+[Download the CSV file](DH\extracted_data\chinese_news.csv)
 
 The dataset contains Chinese news articles and their metadata. Key columns include:
 
-1. **Title**: The title of the news article.
-2. **Content**: The main content of the news article.
-3. **Category**: The category of the news (e.g., politics, economy, sports).
+1. **Date**: The date of the news article.
+2. **tag**: The type of the news article (chinese).
+3. **Headline**: The Headline of the news (chinese).
+4. **Content**: The main content of the news article (chinese).
 
 ## **Architecture**
 
@@ -87,10 +114,6 @@ Thank you to all the contributors for their hard work and dedication to the proj
 ## **Contact**
 
 If you have any questions or comments about Project, please contact **[Shuai Wang](wang.s.e232@m.isct.ac.jp)**.
-
-## **Conclusion**
-
----
 
 ## **Conclusion**
 
